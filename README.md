@@ -37,10 +37,12 @@ sudo $PROGRAMMING_DIRECTORY/Resources/MongoDB/mongodb-osx-x86_64-3.2.0/bin/mongo
 ## UI Mockup
 
 Matt's Jots
-Time           | Text
--------------- | ----
-2 PM 1/11/16   | f
-1 PM 1/11/16   | z
+
+| Time           | Text |
+| -------------- | ---- |
+| 2 PM 1/11/16   | f    |
+| 1 PM 1/11/16   | z    |
+
 
 # TODO 
 
