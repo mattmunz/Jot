@@ -16,7 +16,7 @@ something you want to remember.
 
 ## Status
 
-There are currently just some ideas and preliminary designs and UI mockups (see below).
+Simple note taking by commandline and web is supported. There aren't really deployment instructions so contact me if you need that to get going. Mongodb is needed to host the database where jots are stored.
 
 # User guide
 
