@@ -1,0 +1,24 @@
+
+body { background-color:white; font-family: Verdana, Geneva, sans-serif; }
+
+div#jot-view.h1, div#jot-view.p { text-align: center; }
+
+table#jot-list { margin-top: 20px; margin-bottom: 40px; }
+
+input { width: 500px; margin-right: 5px; }
+
+button { margin-left: 5px; }
+
+table { margin: auto; } 
+
+th { background-color: lightblue; }
+
+table, th, td { border: 1px solid black; border-collapse: collapse; padding: 1px 2px; }
+
+table tr:nth-child(odd) { background-color: #f1f1f1; }
+
+table tr:nth-child(even) { background-color: #ffffff; }
+
+td#jot-time { font-size: 0.6em; }
+
+td#jot-text { font-size: 1.0em; font-weight: bold; }

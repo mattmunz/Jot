@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source/java/production"/>
+	<classpathentry kind="src" path="source/java/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CommandLineInterface"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JIMFS"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Guava"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mockito"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mongo DB Driver"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jersey"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jackson2"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Miscellany"/>
+	<classpathentry kind="output" path="build/eclipse"/>
+</classpath>

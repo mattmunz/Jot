@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+
+  <link rel="stylesheet" href="jot.css"/>
+
+  <script src="angular.js"></script>
+  <script src="jot.js"></script>
+  <script src="jotController.js"></script>
+</head>
+
+<body>
+
+  <div id="jot-view" ng-app="jot" ng-controller="jotController">
+
+    <h1>{{user.firstName}} {{user.lastName}}'s jots</h1>
+
+    <input type="text" name="newJot" ng-model="newJotText" ng-keypress="handleNewJotKeypress($event)"/>
+    <button ng-click="createJot()">Add Jot</button>
+
+    <table id="jot-list">
+
+      <tr><th>Time</th><th>Text</th></tr>
+
+      <tr ng-repeat="j in jots | orderBy: '-time'">
+        <td id="jot-time">{{ j.time | date: 'h:mm:ss a M/d/yy' }}</td>
+        <td id="jot-text">{{ j.text }}</td>
+      </tr>
+    </table>
+    
+    <hr/>
+    
+    <p>This page was authored by {{ author }}.</p>
+  </div>
+</body>
+</html>
