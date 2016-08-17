@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 import mattmunz.jot.Jot;
-import mattmunz.jot.TimeMarshaller;
+import mattmunz.persistence.mongodb.TimeMarshaller;
 import static java.util.stream.Collectors.toList;
 
 public class LogParser

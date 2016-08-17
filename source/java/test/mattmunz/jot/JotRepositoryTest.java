@@ -5,7 +5,6 @@ import static java.time.ZonedDateTime.now;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static java.time.temporal.ChronoUnit.MILLIS;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
@@ -16,6 +15,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import mattmunz.jot.test.mongo.InMemoryFindIterable;
+import mattmunz.persistence.mongodb.MongoClientFactory;
 
 import org.bson.Document;
 import org.junit.Test;

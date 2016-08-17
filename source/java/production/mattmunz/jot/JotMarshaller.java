@@ -4,6 +4,8 @@ import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 
+import mattmunz.persistence.mongodb.TimeMarshaller;
+
 import org.bson.Document;
 
 import com.mongodb.client.FindIterable;

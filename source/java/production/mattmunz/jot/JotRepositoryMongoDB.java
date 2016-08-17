@@ -2,6 +2,8 @@ package mattmunz.jot;
 
 import java.util.List;
 
+import mattmunz.persistence.mongodb.MongoClientFactory;
+
 import org.bson.Document;
 
 import com.mongodb.MongoClient;

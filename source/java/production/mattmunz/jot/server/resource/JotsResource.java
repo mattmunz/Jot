@@ -25,7 +25,6 @@ public class JotsResource
   @Produces(APPLICATION_JSON)
   public List<Jot> getJots() { return repository.get(); }
   
-  
   /**
    * @param identifier The time of the jot in millis. In the future this may be replaced 
    *        with a synthetic identifier. 

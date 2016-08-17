@@ -4,6 +4,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import mattmunz.jot.keyevent.KeyEventRepository;
+import mattmunz.persistence.mongodb.MongoClientFactory;
 
 /**
  * TODO Use Spring Data. By this tutorial, it looks much better: http://spring.io/guides/gs/accessing-data-mongodb/

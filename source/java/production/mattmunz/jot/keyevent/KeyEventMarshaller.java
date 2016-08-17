@@ -4,7 +4,7 @@ import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 
-import mattmunz.jot.TimeMarshaller;
+import mattmunz.persistence.mongodb.TimeMarshaller;
 
 import org.bson.Document;
 
@@ -33,8 +33,8 @@ public class KeyEventMarshaller
   private String getTimeText(KeyEvent event) { return timeMarshaller.getTimeText(event.getTime()); }
   
   // TODO Replace with Jackson?
-  private KeyEvent createEvent(Document document) {
-    
+  private KeyEvent createEvent(Document document) 
+  {
     String text = document.get(TEXT_ATTRIBUTE_NAME, String.class);
     String timeText = document.get(TIME_ATTRIBUTE_NAME, String.class);
     

@@ -6,6 +6,8 @@ import static mattmunz.jot.JotMarshaller.TIME_ATTRIBUTE_NAME;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import mattmunz.persistence.mongodb.MongoClientFactory;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
 

@@ -1,69 +1,59 @@
 package mattmunz.jot.keyevent;
 
-import static com.mongodb.client.model.Filters.eq; 
+import static com.mongodb.client.model.Filters.eq;  
 import static mattmunz.jot.keyevent.KeyEventMarshaller.TIME_ATTRIBUTE_NAME;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
-import mattmunz.jot.MongoClientFactory;
-import mattmunz.jot.TimeMarshaller;
+import mattmunz.persistence.mongodb.MongoClientFactory;
+import mattmunz.persistence.mongodb.MongoRepository;
+import mattmunz.persistence.mongodb.TimeMarshaller;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 
 /**
  * TODO Use Spring Data. By this tutorial, it looks much better: http://spring.io/guides/gs/accessing-data-mongodb/
  */
-public class KeyEventRepository
+public class KeyEventRepository extends MongoRepository
 {
-  private static final String DB_NAME = "jot";
-  private static final String COLLECTION_NAME = "keyEvents";
-  
   private final TimeMarshaller timeMarshaller = new TimeMarshaller();
   private final KeyEventMarshaller eventMarshaller = new KeyEventMarshaller();
-  private final MongoClientFactory clientFactory; 
   
   public KeyEventRepository() { this(new MongoClientFactory()); }
-
+  
   public KeyEventRepository(MongoClientFactory clientFactory)
   {
-    this.clientFactory = clientFactory;
+    super(clientFactory, "jot", "keyEvents");
   }
 
-  public void add(KeyEvent event)
-  {
-    try (MongoClient client = clientFactory.getClient())
-    {
-      getCollection(client).insertOne(eventMarshaller.createDocument(event));
-    }
-  }
+  public void add(KeyEvent event) { consumeWithCollection(this::add, event); }
 
-  public List<KeyEvent> get()
-  {
-    try (MongoClient client = clientFactory.getClient())
-    {
-      return eventMarshaller.createKeyEvents(getCollection(client).find());
-    }
-  }
+  public List<KeyEvent> get() { return getWithCollection(this::get); }
 
   // TODO This isn't quite right with the grouping of Jots and the search mechanism.
   public List<KeyEvent> getByTime(ZonedDateTime time)
   {
-    try (MongoClient client = new MongoClient())
-    {
-      Bson filter = eq(TIME_ATTRIBUTE_NAME, timeMarshaller.getTimeText(time));
-      
-      return eventMarshaller.createKeyEvents(getCollection(client).find(filter));
-    }
+    return applyWithCollection(this::getByTime, time);
   }
 
-  // TODO Move to common superclass or utility method?
-  private MongoCollection<Document> getCollection(MongoClient client) 
+  private void add(MongoCollection<Document> collection, KeyEvent event)
   {
-    return client.getDatabase(DB_NAME).getCollection(COLLECTION_NAME);
+    collection.insertOne(eventMarshaller.createDocument(event));
+  }
+
+  private List<KeyEvent> get(MongoCollection<Document> collection)
+  {
+    return eventMarshaller.createKeyEvents(collection.find());
+  }
+
+  private List<KeyEvent> getByTime(MongoCollection<Document> collection, ZonedDateTime time)
+  {
+    Bson filter = eq(TIME_ATTRIBUTE_NAME, timeMarshaller.getTimeText(time));
+      
+    return eventMarshaller.createKeyEvents(collection.find(filter));
   }
 }
